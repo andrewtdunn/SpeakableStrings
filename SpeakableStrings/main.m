@@ -17,7 +17,8 @@ int main(int argc, const char * argv[])
         // Generate 8 bits of random data
         srandom((unsigned int) time(NULL));
         int64_t randomBytes = (random() << 32) | random();
-        NSLog(@"random bytes: %long", randomBytes);
+        
+        
         // Pack it in an NSData
         NSData *inData = [NSData dataWithBytes:&randomBytes length:sizeof(int64_t)];
         
@@ -27,12 +28,12 @@ int main(int argc, const char * argv[])
         NSString *speakable = [inData encodeAsSpeakableString];
         NSLog(@"Got string \"%@\"", speakable);
         
-        /*
+        
         // Converting it back to an NSData
         NSError *err;
         NSData *outData = [NSData dataWithSpeakableString:speakable
                                                     error:&err];
-       
+        
         if (!outData) {
             NSLog(@"Unexpected Error: %@", [err localizedDescription]);
             return -1;
@@ -44,6 +45,10 @@ int main(int argc, const char * argv[])
         if (![outData isEqual:inData]){
             NSLog(@"Data coming out is not the same as what went in.");
             return -1;
+        }
+        else
+        {
+           NSLog(@"Success!"); 
         }
         
         // Test a mispelling ("Teevo" not "Tivo");
@@ -57,7 +62,7 @@ int main(int argc, const char * argv[])
             NSLog(@"Missed bad string");
             return -1;
         }
-        */
+        
         
     }
     return 0;

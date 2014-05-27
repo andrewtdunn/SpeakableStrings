@@ -11,5 +11,6 @@
 @interface NSData (Speakable)
 
 - (NSString *)encodeAsSpeakableString;
-- (NSData *)dataWithSpeakableString: (NSString *)s error:(NSError **)e;
++ (NSData *)dataWithSpeakableString:(NSString *)s
+                              error:(NSError **)e;
 @end
